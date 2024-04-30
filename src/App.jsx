@@ -32,6 +32,7 @@ const App = () => {
           );
           setCards(newCards);
           setMatchedCount(matchedCount + 1);
+          console.log("Les cartes correspondent !");
         } else {
           setTimeout(() => {
             const newCards = cards.map(card =>
@@ -39,6 +40,10 @@ const App = () => {
             );
             setCards(newCards);
             setTries(tries + 1);
+            // Vérifiez si le nombre d'essais dépasse 10
+            if (tries + 1 >= 10) {
+              setGameOver(true);
+            }
           }, 1000);
         }
 
@@ -90,7 +95,12 @@ const App = () => {
           />
         ))}
       </div>
-      {gameOver && <div>Victoire! 🎉</div>}
+      {gameOver && matchedCount === initialCards.length / 2 ? (
+  <div>Victoire! 🎉</div>
+) : gameOver && tries >= 10 ? (
+  <div>Défaite! 😔</div>
+) : null}
+
       <div>Tries: {tries}</div>
     </div>
   );
