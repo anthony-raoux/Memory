@@ -1,6 +1,5 @@
-// components/Title.jsx
-
 import React from 'react';
+import './title.css';
 
 const Title = ({ text }) => {
   return <h1>{text}</h1>;

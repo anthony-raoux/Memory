@@ -27,6 +27,8 @@
   justify-content: center;
   height: 100vh; /* Ajustez la hauteur selon vos besoins */
   position: relative;
+  padding-top: 60px; /* Adjust as needed */
+  
 }
 
 .container::before {

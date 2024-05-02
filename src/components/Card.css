@@ -4,7 +4,7 @@
     /* Styles spécifiques aux cartes */
     width: 100px; /* Largeur de la carte */
     height: 150px; /* Hauteur de la carte */
-    border: 1px solid #ccc; /* Bordure de la carte */
+   
     border-radius: 8px; /* Bordure arrondie */
     margin: 10px; /* Marge entre les cartes */
     perspective: 1000px; /* Perspective pour l'effet 3D */
@@ -41,7 +41,7 @@
     background-image: url('/src/images/cardback.avif');
     background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la carte */
     background-position: center; /* Centre l'image à l'intérieur de la carte */
-    color: #fff; /* Couleur du texte de la face arrière (si nécessaire) */
+    
   }
   
   .cards {
@@ -65,5 +65,15 @@
     width: 100%;
     height: 100%;
     object-fit: cover; /* Pour couvrir toute la zone de l'image sans déformation */
+  }
+  
+  .card {
+
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.20); /* Increase the size of the card on hover */
+    box-shadow: 0 4px 4px rgba(255, 255, 255, 0.2);;
   }
   
