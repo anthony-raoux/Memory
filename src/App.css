@@ -50,7 +50,8 @@
   margin-bottom: 20px; /* Ajoute de l'espace en bas du header */
   position: relative; /* Ensure the header stays above the background */
   z-index: 1; 
-}
+  }
+
 
 .read-the-docs {
   color: #888;

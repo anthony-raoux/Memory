@@ -7,7 +7,6 @@ import { cardData } from './data/cardData'; // Importez les données de vos cart
 import './App.css'; // Importez le fichier CSS pour l'application
 import Sounds from './components/sons';
 
-
 const App = () => {
   const initialCards = shuffleArray([...cardData, ...cardData]).map((card) => ({
     ...card,
@@ -20,6 +19,22 @@ const App = () => {
   const [matchedCount, setMatchedCount] = useState(0);
   const [tries, setTries] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [username, setUsername] = useState('');
+  const [scoreSubmitted, setScoreSubmitted] = useState(false);
+
+  useEffect(() => {
+    let interval = null;
+    if (isActive && !gameOver) {
+      interval = setInterval(() => {
+        setSeconds((seconds) => seconds + 1);
+      }, 1000);
+    } else if ((!isActive || gameOver) && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, seconds, gameOver]);
 
   useEffect(() => {
     if (flippedCount === 2) {
@@ -42,7 +57,6 @@ const App = () => {
             );
             setCards(newCards);
             setTries(tries + 1);
-            // Vérifiez si le nombre d'essais dépasse 10
             if (tries + 1 >= 10) {
               setGameOver(true);
             }
@@ -64,6 +78,7 @@ const App = () => {
       newCards[index].flipped = true;
       setCards(newCards);
       setFlippedCount(flippedCount + 1);
+      setIsActive(true);
     }
   };
 
@@ -78,14 +93,44 @@ const App = () => {
     setMatchedCount(0);
     setTries(0);
     setGameOver(false);
+    setSeconds(0);
+    setIsActive(false);
+    setUsername('');
+    setScoreSubmitted(false);
+  };
+
+  const handleSubmitScore = () => {
+    setScoreSubmitted(true);
+    // Enregistrez le score avec le nom d'utilisateur dans le stockage local
+    const score = {
+      Pseudo: username,
+      Temps: seconds,
+      Erreurs: tries
+    };
+    const scores = JSON.parse(localStorage.getItem('scores')) || [];
+    scores.push(score);
+    localStorage.setItem('scores', JSON.stringify(scores));
   };
 
   return (
     <div className="container">
       <div className="header">
         <Title text="Jeu de mémoire" />
-        <Button text="Recommencer" onClick={restartGame} />
-        <Sounds />
+        {gameOver && !scoreSubmitted && (
+          <div>
+            <input 
+              type="text" 
+              placeholder="Entrez votre pseudo" 
+              value={username} 
+              onChange={(e) => setUsername(e.target.value)} 
+            />
+            <Button text="Soumettre le score" onClick={handleSubmitScore} />
+          </div>
+        )}
+        <div className="buttons">
+          <Button text="Recommencer" onClick={restartGame} />
+          <Sounds />
+        </div>
       </div>
       <div className="cards">
         {cards.map((card, index) => (
@@ -99,12 +144,12 @@ const App = () => {
         ))}
       </div>
       {gameOver && matchedCount === initialCards.length / 2 ? (
-  <div>Victoire! 🎉</div>
-) : gameOver && tries >= 10 ? (
-  <div>Défaite! 😔</div>
-) : null}
-
+        <div>Victoire! 🎉</div>
+      ) : gameOver && tries >= 10 ? (
+        <div>Défaite! 😔</div>
+      ) : null}
       <div>Erreurs: {tries}</div>
+      <div>Temps écoulé: {seconds} secondes</div>
     </div>
   );
 };
