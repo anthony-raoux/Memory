@@ -101,7 +101,7 @@ const App = () => {
   <div>Défaite! 😔</div>
 ) : null}
 
-      <div>Tries: {tries}</div>
+      <div>Erreurs: {tries}</div>
     </div>
   );
 };
