@@ -5,6 +5,8 @@ import Card from './components/card'; // Importez le composant Card
 import { shuffleArray } from './utils/shuffleArray'; // Importez la fonction shuffleArray
 import { cardData } from './data/cardData'; // Importez les données de vos cartes
 import './App.css'; // Importez le fichier CSS pour l'application
+import Sounds from './components/sons';
+
 
 const App = () => {
   const initialCards = shuffleArray([...cardData, ...cardData]).map((card) => ({
@@ -83,6 +85,7 @@ const App = () => {
       <div className="header">
         <Title text="Jeu de mémoire" />
         <Button text="Recommencer" onClick={restartGame} />
+        <Sounds />
       </div>
       <div className="cards">
         {cards.map((card, index) => (
