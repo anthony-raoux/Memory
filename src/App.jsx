@@ -4,7 +4,7 @@ import Button from './components/Button';
 import Card from './components/Card'; // Importez le composant Card
 import { shuffleArray } from './utils/shuffleArray'; // Importez la fonction shuffleArray
 import { cardData } from './data/cardData'; // Importez les données de vos cartes
-import './App.css'; // Importez le fichier CSS pour l'application
+import './styles/App.css'; // Importez le fichier CSS pour l'application
 import Sounds from './components/Sons';
 
 const App = () => {

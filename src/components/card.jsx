@@ -12,7 +12,7 @@ const Card = ({ card, isFlipped, onClick }) => {
       setTimeout(() => {
         setIsAnimating(false);
         onClick();
-      }, 500); // Durée de l'animation en millisecondes
+      }, 100); // Durée de l'animation en millisecondes
     }
     console.log("ID de la carte:", card.id); // Affichage de l'ID de la carte
   };

@@ -14,12 +14,12 @@
     /* Styles pour la carte intérieure */
     width: 100%;
     height: 100%;
-    transition: transform 0.5s; /* Animation de transition pour le retournement */
+    transition: transform 0.9s; /* Animation de transition pour le retournement */
     transform-style: preserve-3d;
   }
   
   .card.flipped .card-inner {
-    transform: rotateY(180deg); /* Rotation pour le retournement */
+    transform: rotateY(540deg); /* Rotation pour le retournement */
   }
   
   .card-back {
@@ -68,12 +68,11 @@
   }
   
   .card {
-
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Ajoutez une transition pour la propriété box-shadow */
   }
   
   .card:hover {
-    transform: scale(1.20); /* Increase the size of the card on hover */
-    box-shadow: 0 4px 4px rgba(255, 255, 255, 0.2);;
+    transform: scale(1.20); /* Augmentez la taille de la carte au survol */
+    box-shadow: 0 8px 8px rgba(255, 255, 255, 0.3); /* Modifiez l'ombre portée */
   }
   
