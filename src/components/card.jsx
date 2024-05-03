@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import './Card.css';
+import '../styles/Card.css';
 
 const Card = ({ card, isFlipped, onClick }) => {
   const [isAnimating, setIsAnimating] = useState(false);
+  const flipSound = new Audio('/src/audio/carte.mp3'); // Importez votre fichier audio
 
   const handleCardClick = () => {
     if (!isAnimating && !isFlipped) {
       setIsAnimating(true);
+      flipSound.play(); // Jouez le son lorsque la carte est retournée
       setTimeout(() => {
         setIsAnimating(false);
         onClick();
