@@ -22,6 +22,14 @@ const Card = ({ card, isFlipped, onClick }) => {
       className={`card card-component ${isFlipped ? 'flipped' : ''} ${isAnimating ? 'animating' : ''}`}
       onClick={handleCardClick}
     >
+      <div class="center-box">
+ 
+  <div class="animated-border-box-glow"></div>
+  <div class="animated-border-box">
+
+  </div>
+ 
+</div>
       <div className="card-inner">
         <div className="card-front">
           {isFlipped && card.image && <img src={card.image} alt="Card" />} {/* Affiche l'image si elle est définie */}

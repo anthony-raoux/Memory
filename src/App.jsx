@@ -60,7 +60,7 @@ const App = () => {
             if (tries + 1 >= 10) {
               setGameOver(true);
             }
-          }, 1000);
+          }, 1500);
         }
 
         setFlippedCount(0);
@@ -88,6 +88,8 @@ const App = () => {
       flipped: false,
       matched: false,
     }));
+    setCards([]);
+    setTimeout(() => {
     setCards(shuffledCards);
     setFlippedCount(0);
     setMatchedCount(0);
@@ -97,6 +99,7 @@ const App = () => {
     setIsActive(false);
     setUsername('');
     setScoreSubmitted(false);
+    }, 0); // Adjust the delay as needed
   };
 
   const handleSubmitScore = () => {
@@ -156,4 +159,4 @@ const App = () => {
 
 export default App;
 
-// ajouter les sons carte, victoire et défaite, et aussi le niveaux 2 //
+// ajouter les sons victoire et défaite, et aussi le niveaux 2 //
