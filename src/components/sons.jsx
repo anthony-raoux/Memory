@@ -34,7 +34,7 @@ const Sounds = () => {
   return (
     <div>
       <button onClick={toggleSound}>
-        {isSoundOn ? 'Désactiver le son' : 'Activer le son'}
+        {isSoundOn ? 'Désactiver la musique' : 'Activer la musique'}
       </button>
     </div>
   );

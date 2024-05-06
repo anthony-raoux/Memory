@@ -23,6 +23,18 @@ const App = () => {
   const [isActive, setIsActive] = useState(false);
   const [username, setUsername] = useState('');
   const [scoreSubmitted, setScoreSubmitted] = useState(false);
+  const victorySound = new Audio('/src/audio/gagné.mp3'); // Adjust the path to your victory sound file
+  const defeatSound = new Audio('/src/audio/perdu.mp3'); 
+
+  useEffect(() => {
+    if (gameOver) {
+      if (matchedCount === initialCards.length / 2) {
+        victorySound.play();
+      } else {
+        defeatSound.play();
+      }
+    }
+  }, [gameOver, matchedCount, initialCards.length]);
 
   useEffect(() => {
     let interval = null;
@@ -149,9 +161,9 @@ const App = () => {
       </div>
       <div className='font'>
       {gameOver && matchedCount === initialCards.length / 2 ? (
-        <div>Victoire! 🎉</div>
+        <div className="victory-message">Victoire! 🎉</div>
       ) : gameOver && tries >= 10 ? (
-        <div>Défaite! 😔</div>
+        <div className="defeat-message">Défaite! 💔</div>
       ) : null}
       <div className="info-container">
       <div>Erreurs: {tries}</div>
@@ -165,4 +177,4 @@ const App = () => {
 
 export default App;
 
-// ajouter les sons victoire et défaite, et aussi le niveaux 2 //
+// ajouter les sons quand on trouve la bonne paire ou non, et aussi le niveaux 2 //

@@ -37,7 +37,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 800px;
+  height: 900px;
   background-image: url("/src/images/tapisdefond.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -50,6 +50,7 @@
   margin-bottom: 20px; /* Ajoute de l'espace en bas du header */
   position: relative; /* Ensure the header stays above the background */
   z-index: 1; 
+  margin-top: 100px;
   }
 
 
@@ -70,5 +71,47 @@
   justify-content:center;
   justify-content: space-evenly;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
+}
+
+.victory-message {
+  animation: bounce 0.5s ease forwards;
+  transform-origin: bottom;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.victory-message {
+  font-size: 24px;
+  color: #ffee00; 
+}
+
+.defeat-message {
+  font-size: 24px;
+  color: red; /* Change the color to red or any other color you prefer */
+  /* Add any additional styling you want for the defeat message */
+}
+
+/* Animation for the defeat message */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.defeat-message {
+  animation: fade-in 0.5s ease-in-out; /* Apply the fade-in animation */
 }
