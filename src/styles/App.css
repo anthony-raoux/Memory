@@ -43,6 +43,7 @@
   background-repeat: no-repeat;
   opacity: 0.5; /* Adjust the opacity value to make the background image less pronounced */
   z-index: -1;
+  
 }
 
 
@@ -115,3 +116,4 @@
 .defeat-message {
   animation: fade-in 0.5s ease-in-out; /* Apply the fade-in animation */
 }
+

@@ -6,6 +6,8 @@ import { shuffleArray } from './utils/shuffleArray'; // Importez la fonction shu
 import { cardData } from './data/cardData'; // Importez les données de vos cartes
 import './styles/App.css'; // Importez le fichier CSS pour l'application
 import Sounds from './components/Sons';
+import correctSoundFile from './audio/bonnepaire.wav';
+import wrongSoundFile from './audio/mauvaisepaire.mp3';
 
 const App = () => {
   const initialCards = shuffleArray([...cardData, ...cardData]).map((card) => ({
@@ -25,6 +27,8 @@ const App = () => {
   const [scoreSubmitted, setScoreSubmitted] = useState(false);
   const victorySound = new Audio('/src/audio/gagné.mp3'); // Adjust the path to your victory sound file
   const defeatSound = new Audio('/src/audio/perdu.mp3'); 
+  const [correctSound] = useState(new Audio(correctSoundFile));
+  const [wrongSound] = useState(new Audio(wrongSoundFile));
 
   useEffect(() => {
     if (gameOver) {
@@ -62,6 +66,10 @@ const App = () => {
           setCards(newCards);
           setMatchedCount(matchedCount + 1);
           console.log("Les cartes correspondent !");
+           setTimeout(() => {
+            correctSound.play();
+        }, 1000); // Adjust the delay time as needed 
+          
         } else {
           setTimeout(() => {
             const newCards = cards.map(card =>
@@ -72,9 +80,13 @@ const App = () => {
             if (tries + 1 >= 10) {
               setGameOver(true);
             }
+            // Play wrong audio after a delay
+            setTimeout(() => {
+              wrongSound.play(); // Replace this with your wrong audio function
+            }, 0); // Adjust the delay time as needed
           }, 1500);
         }
-
+  
         setFlippedCount(0);
       }
     }
@@ -177,4 +189,4 @@ const App = () => {
 
 export default App;
 
-// ajouter les sons quand on trouve la bonne paire ou non, et aussi le niveaux 2 //
+// ajouter le niveaux 2 //
