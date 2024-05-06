@@ -48,6 +48,7 @@
     justify-content: center;
     gap: 60px; /* Espacement entre les cartes */
     margin-top: 20px; /* Ajoute de l'espace en haut des cartes */
+    
   }
   
   .card-front {
@@ -67,6 +68,7 @@
   
   .card {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Ajoutez une transition pour la propriété box-shadow */
+    cursor: pointer;
   }
   
   .card:hover {

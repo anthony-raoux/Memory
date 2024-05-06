@@ -119,6 +119,7 @@ const App = () => {
     <div className="container">
       <div className="header">
         <Title text="Jeu de mémoire" />
+        <div className="game-info">
         {gameOver && !scoreSubmitted && (
           <div>
             <input 
@@ -146,13 +147,18 @@ const App = () => {
           />
         ))}
       </div>
+      <div className='font'>
       {gameOver && matchedCount === initialCards.length / 2 ? (
         <div>Victoire! 🎉</div>
       ) : gameOver && tries >= 10 ? (
         <div>Défaite! 😔</div>
       ) : null}
+      <div className="info-container">
       <div>Erreurs: {tries}</div>
       <div>Temps écoulé: {seconds} secondes</div>
+      </div>
+      </div>
+    </div>
     </div>
   );
 };

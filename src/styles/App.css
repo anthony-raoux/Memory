@@ -56,3 +56,19 @@
 .read-the-docs {
   color: #888;
 }
+
+.game-info {
+  font-family: fantasy;
+}
+
+.font {
+  font-family: fantasy;
+}
+
+.info-container {
+  display: flex;
+  justify-content:center;
+  justify-content: space-evenly;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
