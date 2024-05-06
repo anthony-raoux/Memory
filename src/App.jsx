@@ -189,4 +189,4 @@ const App = () => {
 
 export default App;
 
-// ajouter le niveaux 2 //
+// enlever effet son sur la derniere carte avant le son victoire/défaite, option pour enlever les sons, ajouter le niveaux 2 //

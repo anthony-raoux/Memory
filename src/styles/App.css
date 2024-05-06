@@ -28,7 +28,6 @@
   height: 100vh; /* Ajustez la hauteur selon vos besoins */
   position: relative;
   padding-top: 60px; /* Adjust as needed */
-  
 }
 
 .container::before {
@@ -43,7 +42,6 @@
   background-repeat: no-repeat;
   opacity: 0.5; /* Adjust the opacity value to make the background image less pronounced */
   z-index: -1;
-  
 }
 
 
