@@ -35,7 +35,18 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  animation: bounce 0.9s ease-in-out; /* Apply bounce animation */
 }
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0); /* Start and end position */
+  }
+  50% {
+    transform: translateY(-10px); /* Bounce up */
+  }
+}
+
 
 button {
   border-radius: 8px;

@@ -29,16 +29,27 @@ const App = () => {
   const defeatSound = new Audio('/src/audio/perdu.mp3'); 
   const [correctSound] = useState(new Audio(correctSoundFile));
   const [wrongSound] = useState(new Audio(wrongSoundFile));
-
-  useEffect(() => {
-    if (gameOver) {
-      if (matchedCount === initialCards.length / 2) {
-        victorySound.play();
-      } else {
-        defeatSound.play();
+  const [gameWon, setGameWon] = useState(false);
+  
+    // Listen for changes in the gameWon state
+    useEffect(() => {
+      if (gameWon) {
+        // Add the video-background class to the container when game is won
+        document.querySelector('.container').classList.add('video-background');
       }
-    }
-  }, [gameOver, matchedCount, initialCards.length]);
+    }, [gameWon]);
+
+    useEffect(() => {
+      if (gameOver) {
+        if (matchedCount === initialCards.length / 2) {
+          setGameWon(true); // Set gameWon to true when the win condition is met
+          document.querySelector('.container').classList.add('background-slide-up');
+          victorySound.play();
+        } else {
+          defeatSound.play();
+        }
+      }
+    }, [gameOver, matchedCount, initialCards.length]);
 
   useEffect(() => {
     let interval = null;
@@ -189,4 +200,3 @@ const App = () => {
 
 export default App;
 
-// enlever effet son sur la derniere carte avant le son victoire/défaite, option pour enlever les sons, ajouter le niveaux 2 //
